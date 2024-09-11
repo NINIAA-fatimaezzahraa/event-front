@@ -1,0 +1,62 @@
+.search-section {
+  input, select, button {
+    font-size: 16px;
+  }
+
+  .fa {
+    font-size: 18px;
+  }
+}
+
+/* Ensure Flatpickr dropdown matches the input width */
+.flatpickr-calendar {
+  width: 100% !important; /* Make the calendar dropdown 100% of its container */
+  min-width: unset !important; /* Remove any minimum width settings */
+}
+
+
+@media (max-width: 768px) {
+  /* Header adjustments */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  /* Adjusting buttons for mobile */
+  .flex.space-x-3 {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  /* Search Section adjustments */
+  .search-section {
+    grid-template-columns: 1fr; /* Stack elements vertically */
+    gap: 10px;
+  }
+
+  .search-section input, .search-section select, .search-section button {
+    width: 100%;
+  }
+
+  /* Event List adjustments */
+  .event-list {
+    grid-template-columns: 1fr;
+  }
+
+  /* Pagination for mobile */
+  .pagination {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Footer padding */
+  footer {
+    padding: 20px;
+  }
+}
