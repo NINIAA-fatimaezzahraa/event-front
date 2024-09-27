@@ -1,0 +1,58 @@
+{
+  "header": {
+    "title": "EventConnect",
+    "home": "Home",
+    "events": "Events",
+    "gallery": "Gallery",
+    "blog": "Blog",
+    "contact": "Contact",
+    "signin": "Sign in",
+    "signup": "Sign up"
+  },
+  "search": {
+    "keyword": "Search Keyword",
+    "placeholder": "Search",
+    "locationLabel": "Location",
+    "allLocations": "All Locations",
+    "eventDate": "Event Date",
+    "searchBtn": "Search"
+  },
+  "events": {
+    "categories": "Categories",
+    "priceMin": "Price Min",
+    "priceMax": "Price Max",
+    "applyFilters": "Apply Filters",
+    "resultsInfo": "Showing {{start}} - {{end}} of {{total}} Results",
+    "bookTicket": "Book Ticket",
+    "location": "Location",
+    "time": "Time",
+    "resultsPerPage": "Results per page",
+    "prev": "Prev",
+    "next": "Next"
+  },
+  "booking": {
+    "modal": {
+      "title": "Book Ticket for {{event}}",
+      "location": "Location",
+      "date": "Date",
+      "time": "Time",
+      "price": "Price",
+      "confirm": "Confirm Booking",
+      "cancel": "Cancel"
+    }
+  },
+  "common": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "footer": {
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "contactUs": "Contact Us",
+    "copyright": "&copy; 2024 EventConnect. All Rights Reserved."
+  }
+}

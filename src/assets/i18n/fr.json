@@ -1,0 +1,58 @@
+{
+  "header": {
+    "title": "EventConnect",
+    "home": "Accueil",
+    "events": "Événements",
+    "gallery": "Galerie",
+    "blog": "Blog",
+    "contact": "Contact",
+    "signin": "Se connecter",
+    "signup": "S'inscrire"
+  },
+  "search": {
+    "keyword": "Mot clé",
+    "placeholder": "Recherche",
+    "locationLabel": "Emplacement",
+    "allLocations": "Tous les emplacements",
+    "eventDate": "Date de l'événement",
+    "searchBtn": "Rechercher"
+  },
+  "events": {
+    "categories": "Catégories",
+    "priceMin": "Prix Min",
+    "priceMax": "Prix Max",
+    "applyFilters": "Appliquer les filtres",
+    "resultsInfo": "Affichage de {{start}} - {{end}} sur {{total}} résultats",
+    "bookTicket": "Réserver un billet",
+    "location": "Emplacement",
+    "time": "Heure",
+    "resultsPerPage": "Résultats par page",
+    "prev": "Précédent",
+    "next": "Suivant"
+  },
+  "booking": {
+    "modal": {
+      "title": "Réserver un billet pour {{event}}",
+      "location": "Emplacement",
+      "date": "Date",
+      "time": "Heure",
+      "price": "Prix",
+      "confirm": "Confirmer la réservation",
+      "cancel": "Annuler"
+    }
+  },
+  "common": {
+    "confirm": "Confirmer",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "yes": "Oui",
+    "no": "Non"
+  },
+  "footer": {
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation",
+    "contactUs": "Nous contacter",
+    "copyright": "&copy; 2024 EventConnect. Tous droits réservés."
+  }
+}
