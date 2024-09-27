@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import flatpickr from 'flatpickr';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
@@ -71,7 +72,20 @@ export class AppComponent  implements OnInit, AfterViewInit {
   selectedEvent!: Event;
   protected readonly Math = Math;
 
+  currentLang: string = 'en';
+  isLanguageDropdownOpen = false;
+
+  constructor(private translate: TranslateService) {
+    translate.addLangs(['en', 'fr']);
+    //translate.setDefaultLang(this.currentLang);
+    //translate.use(this.currentLang);
+  }
+
   ngOnInit() {
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    this.currentLang = savedLanguage ?? 'en';
+    this.translate.use(this.currentLang);
+
     this.totalPages = Math.ceil(this.filteredEvents.length / this.pageSize);
     this.paginateEvents();
   }
@@ -83,11 +97,36 @@ export class AppComponent  implements OnInit, AfterViewInit {
       defaultDate: 'today',
     });
 
-    this.paginateEvents(); // Initialize pagination
+    this.paginateEvents();
   }
 
   onSearch() {
     console.log("Search button clicked!");
+  }
+
+  toggleLanguageDropdown(event: MouseEvent): void {
+    event.stopPropagation(); // Prevent immediate closing when clicking inside the dropdown
+    this.isLanguageDropdownOpen = !this.isLanguageDropdownOpen;
+  }
+
+  closeLanguageDropdown(event: MouseEvent): void {
+    const dropdownElement = document.querySelector('.language-dropdown');
+    if (dropdownElement && !dropdownElement.contains(event.target as Node)) {
+      this.isLanguageDropdownOpen = false;
+    }
+  }
+
+  switchLanguage(lang: string): void {
+    if (this.currentLang !== lang) {
+      this.currentLang = lang;
+      localStorage.setItem('selectedLanguage', lang);
+      this.translate.use(lang);
+    }
+    this.isLanguageDropdownOpen = false;
+  }
+
+  getSelectedFlag() {
+    return this.currentLang === 'en' ? 'assets/flags/en.svg' : 'assets/flags/fr.svg';
   }
 
   // Apply Filters Logic

@@ -1,11 +1,9 @@
 <div class="event-list-container">
   <!-- Header Section -->
-
-  <!-- Header Section -->
   <header class="flex justify-between items-center p-5 bg-blue-800 text-white">
     <!-- Logo -->
     <div class="logo text-2xl font-bold">
-      EventConnect
+      {{ 'header.title' | translate }}
     </div>
 
     <!-- Hamburger Menu for Small Screens (Positioned on the right) -->
@@ -18,35 +16,58 @@
     <!-- Full Navigation (Visible on large screens) -->
     <nav class="hidden lg:flex space-x-10 text-lg font-medium ml-10"> <!-- Added space between logo and nav -->
       <a href="#" class="relative group text-white">
-        Home
+        <h1>{{ 'header.home' | translate }}</h1>
         <span class="absolute bottom-0 left-0 w-full h-1 bg-cyan-300"></span> <!-- Active link -->
       </a>
       <a href="#" class="relative group text-white">
-        Events
+        <h1>{{ 'header.events' | translate }}</h1>
         <span class="absolute bottom-0 left-0 w-0 h-1 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
       </a>
       <a href="#" class="relative group text-white">
-        Gallery
+        <h1>{{ 'header.gallery' | translate }}</h1>
         <span class="absolute bottom-0 left-0 w-0 h-1 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
       </a>
       <a href="#" class="relative group text-white">
-        Blog
+        <h1>{{ 'header.blog' | translate }}</h1>
         <span class="absolute bottom-0 left-0 w-0 h-1 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
       </a>
       <a href="#" class="relative group text-white">
-        Contact
+        <h1>{{ 'header.contact' | translate }}</h1>
         <span class="absolute bottom-0 left-0 w-0 h-1 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
       </a>
     </nav>
 
     <!-- Sign In and Sign Up Buttons (Visible on large screens) -->
     <div class="hidden lg:flex space-x-3 ml-auto"> <!-- Flexbox for spacing between buttons -->
+      <!-- Custom Dropdown for Language Selection -->
+      <div class="language-dropdown" (document:click)="closeLanguageDropdown($event)">
+        <div class="dropdown">
+          <button
+            class="dropbtn bg-white border border-blue-600 flex items-center justify-center rounded-full overflow-hidden"
+            (click)="toggleLanguageDropdown($event)">
+            <img [src]="getSelectedFlag()" alt="Current language" class="flag-icon-full">
+          </button>
+          <div class="dropdown-content" *ngIf="isLanguageDropdownOpen">
+            <a href="#" (click)="switchLanguage('en')">
+              <img src="assets/flags/en.svg" alt="English" class="flag-icon"> English
+            </a>
+            <a href="#" (click)="switchLanguage('fr')">
+              <img src="assets/flags/fr.svg" alt="Français" class="flag-icon"> Français
+            </a>
+          </div>
+        </div>
+      </div>
+
       <a href="#" class="flex items-center text-white bg-blue-600 px-4 py-2 rounded-full hover:bg-blue-700 transition">
-        <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+        <i class="fas fa-sign-in-alt mr-2"></i>
+        <h1>{{ 'header.signin' | translate }}</h1>
       </a>
       <a href="#" class="flex items-center text-blue-600 bg-white border border-blue-600 px-4 py-2 rounded-full hover:bg-blue-100 transition">
-        <i class="fas fa-user-plus mr-2"></i>Sign Up
+        <i class="fas fa-user-plus mr-2"></i>
+        <h1>{{ 'header.signup' | translate }}</h1>
       </a>
+
+
     </div>
   </header>
 
@@ -54,20 +75,20 @@
   <div class="search-section grid grid-cols-12 gap-6 items-center p-6 pt-12 pb-12 bg-gray-50 lg:px-20 shadow-lg rounded-md">
     <!-- Search Keyword -->
     <div class="flex flex-col col-span-12 md:col-span-3">
-      <label class="font-semibold mb-3 text-gray-700 uppercase tracking-wide">Search Keyword</label>
+      <label class="font-semibold mb-3 text-gray-700 uppercase tracking-wide">{{ 'search.keyword' | translate }}</label>
       <div class="relative">
         <i class="fa fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-        <input type="text" placeholder="Search" class="pl-10 pr-4 py-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out" />
+        <input type="text" placeholder="{{ 'search.placeholder' | translate }}" class="pl-10 pr-4 py-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out" />
       </div>
     </div>
 
     <!-- Location -->
     <div class="flex flex-col col-span-12 md:col-span-3">
-      <label class="font-semibold mb-3 text-gray-700 uppercase tracking-wide">Location</label>
+      <label class="font-semibold mb-3 text-gray-700 uppercase tracking-wide">{{ 'search.locationLabel' | translate }}</label>
       <div class="relative">
         <i class="fa fa-map-marker-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
         <select class="appearance-none bg-white pl-10 pr-4 py-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out">
-          <option value="" disabled selected>All Locations</option>
+          <option value="" disabled selected>{{ 'search.allLocations' | translate }}</option>
           <option value="paris">Paris</option>
           <option value="lyon">Lyon</option>
           <option value="marseille">Marseille</option>
@@ -79,7 +100,7 @@
 
     <!-- Event Date -->
     <div class="flex flex-col col-span-12 md:col-span-3">
-      <label class="font-semibold mb-3 text-gray-700 uppercase tracking-wide">Event Date</label>
+      <label class="font-semibold mb-3 text-gray-700 uppercase tracking-wide">{{ 'search.eventDate' | translate }}</label>
       <div class="relative">
         <i class="fa fa-calendar-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
         <input type="text" id="datepicker" class="pl-10 pr-4 py-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out" />
@@ -88,9 +109,9 @@
 
     <!-- Search Button -->
     <div class="flex flex-col col-span-12 md:col-span-3 justify-end">
-      <label class="font-semibold mb-3 invisible">Search</label>
+      <label class="font-semibold mb-3 invisible">{{ 'search.searchBtn' | translate }}</label>
       <button class="flex items-center justify-center bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-blue-800 hover:shadow-lg focus:ring-4 focus:ring-blue-400 transition-all duration-300 ease-in-out">
-        <i class="fa fa-search mr-2"></i> Search
+        <i class="fa fa-search mr-2"></i> {{ 'search.searchBtn' | translate }}
       </button>
     </div>
   </div>
@@ -100,7 +121,7 @@
     <div class="event-section grid grid-cols-12 gap-5 ">
       <!-- Event Filter Section -->
       <div class="col-span-12 lg:col-span-3 bg-gray-100 p-5 border-r">
-        <h2 class="font-bold text-lg mb-4">Categories</h2>
+        <h2 class="font-bold text-lg mb-4">{{ 'events.categories' | translate }}</h2>
 
         <!-- Categories List -->
         <div *ngFor="let category of categories">
@@ -112,14 +133,14 @@
 
         <!-- Price Filter -->
         <div class="mt-6">
-          <h2 class="font-bold text-lg mb-4">Price Min</h2>
+          <h2 class="font-bold text-lg mb-4">{{ 'events.priceMin' | translate }}</h2>
           <div class="flex items-center justify-between mb-2">
             <!-- Min Price Display -->
             <span class="text-lg font-semibold text-blue-600">£{{ minPrice }}</span>
             <input type="range" min="0" max="{{minPrice}}" [(ngModel)]="minPrice" (input)="onPriceChange($event)" class="w-full ml-4" id="minPrice" />
           </div>
 
-          <h2 class="font-bold text-lg mt-8">Price Max</h2>
+          <h2 class="font-bold text-lg mt-8">{{ 'events.priceMax' | translate }}</h2>
           <div class="flex items-center justify-between mb-2">
             <input type="range" min="0" max="{{maxPrice}}" [(ngModel)]="maxPrice" (input)="onPriceChange($event)" class="w-full mr-4" id="maxPrice" />
             <!-- Max Price Display -->
@@ -130,7 +151,7 @@
         <!-- Apply Filters Button -->
         <div class="mt-4">
           <button class="bg-blue-800 text-white px-4 py-2 rounded-lg w-full hover:bg-blue-600" (click)="applyFilters()">
-            Apply Filters
+            {{ 'events.applyFilters' | translate }}
           </button>
         </div>
       </div>
@@ -138,7 +159,7 @@
       <!-- Event List Section -->
       <div class="col-span-12 lg:col-span-9 p-5 bg-white flex flex-col flex-grow min-h-[500px]">
         <h2 class="font-bold text-lg mb-4">
-          Showing {{ (currentPage - 1) * pageSize + 1 }} - {{ Math.min(currentPage * pageSize, filteredEvents.length) }} of {{ filteredEvents.length }} Results
+          {{ 'events.resultsInfo' | translate:{start: (currentPage - 1) * pageSize + 1, end: Math.min(currentPage * pageSize, filteredEvents.length), total: filteredEvents.length} }}
         </h2>
 
         <!-- Events items -->
@@ -149,9 +170,9 @@
               <h3 class="text-xl font-bold mb-3 text-gray-700">{{ event.name }}</h3>
               <hr class="border-t-2 border-gray-200 mb-3">
               <div class="flex flex-wrap space-x-4">
-                <p><strong>Location</strong><br>{{ event.location }}</p>
+                <p><strong>{{ 'events.location' | translate }}</strong><br>{{ event.location }}</p>
                 <p><strong>{{ event.date | date:'EEEE' }}</strong><br>{{ event.date | date:'MMMM d, y' }}</p>
-                <p><strong>Time</strong><br>{{ event.time }}</p>
+                <p><strong>{{ 'events.time' | translate }}</strong><br>{{ event.time }}</p>
               </div>
             </div>
 
@@ -159,7 +180,7 @@
             <div class="text-right">
               <div class="price text-3xl font-bold text-gray-800 mb-4">£{{ event.price }}</div>
               <button (click)="openBookTicketModal(event)" class="bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition">
-                Book Ticket
+                {{ 'events.bookTicket' | translate }}
               </button>
             </div>
           </div>
@@ -169,7 +190,7 @@
         <div class="pagination mt-6 flex justify-between items-center space-x-2">
           <!-- Page Size Dropdown -->
           <div class="flex items-center space-x-2">
-            <label for="pageSize" class="text-gray-700">Results per page:</label>
+            <label for="pageSize" class="text-gray-700">{{ 'events.resultsPerPage' | translate }}:</label>
             <select id="pageSize" [(ngModel)]="pageSize" (change)="updatePageSize($event)" class="border border-gray-300 rounded-lg p-2">
               <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
             </select>
@@ -177,7 +198,9 @@
 
           <!-- Previous/Next Buttons -->
           <div class="flex items-center space-x-2">
-            <button (click)="previousPage()" class="p-2 bg-gray-300 rounded-lg" [disabled]="currentPage === 1">Prev</button>
+            <button (click)="previousPage()" class="p-2 bg-gray-300 rounded-lg" [disabled]="currentPage === 1">
+              {{ 'events.prev' | translate }}
+            </button>
 
             <!-- Page Numbers -->
             <button
@@ -188,7 +211,9 @@
               {{ page }}
             </button>
 
-            <button (click)="nextPage()" class="p-2 bg-gray-300 rounded-lg" [disabled]="currentPage === totalPages">Next</button>
+            <button (click)="nextPage()" class="p-2 bg-gray-300 rounded-lg" [disabled]="currentPage === totalPages">
+              {{ 'events.next' | translate }}
+            </button>
           </div>
         </div>
       </div>
@@ -200,7 +225,7 @@
     <div class="modal-content bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl h-auto max-h-screen overflow-y-auto">
       <!-- Modal Header -->
       <div class="modal-header flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold">Book Ticket for {{ selectedEvent.name }}</h2>
+        <h2 class="text-2xl font-bold">{{ 'booking.modal.title' | translate:{event: selectedEvent.name} }}</h2>
         <button (click)="closeModal()" class="text-gray-500 hover:text-gray-800 focus:outline-none">
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -210,19 +235,19 @@
 
       <!-- Modal Body -->
       <div class="modal-body">
-        <p class="mb-4">Location: {{ selectedEvent.location }}</p>
-        <p class="mb-4">Date: {{ selectedEvent.date }}</p>
-        <p class="mb-4">Time: {{ selectedEvent.time }}</p>
-        <p class="mb-4 font-bold text-lg">Price: £{{ selectedEvent.price }}</p>
+        <p class="mb-4">{{ 'booking.modal.location' | translate }}: {{ selectedEvent.location }}</p>
+        <p class="mb-4">{{ 'booking.modal.date' | translate }}: {{ selectedEvent.date }}</p>
+        <p class="mb-4">{{ 'booking.modal.time' | translate }}: {{ selectedEvent.time }}</p>
+        <p class="mb-4 font-bold text-lg">{{ 'booking.modal.price' | translate }}: £{{ selectedEvent.price }}</p>
       </div>
 
       <!-- Modal Footer -->
       <div class="modal-footer flex justify-end mt-6">
         <button (click)="confirmBooking()" class="bg-green-500 text-white px-4 py-2 rounded-lg mr-4 hover:bg-green-600 focus:outline-none">
-          Confirm Booking
+          {{ 'booking.modal.confirm' | translate }}
         </button>
         <button (click)="closeModal()" class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 focus:outline-none">
-          Cancel
+          {{ 'booking.modal.cancel' | translate }}
         </button>
       </div>
     </div>
@@ -262,22 +287,16 @@
 
         <!-- Navigation Links -->
         <div class="flex space-x-6 text-sm md:text-base">
-          <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
-          <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
-          <a href="#" class="text-gray-400 hover:text-white transition duration-300">Contact Us</a>
+          <a href="#" class="text-gray-400 hover:text-white transition duration-300">{{ 'footer.privacyPolicy' | translate }}</a>
+          <a href="#" class="text-gray-400 hover:text-white transition duration-300">{{ 'footer.termsOfService' | translate }}</a>
+          <a href="#" class="text-gray-400 hover:text-white transition duration-300">{{ 'footer.contactUs' | translate }}</a>
         </div>
       </div>
 
       <!-- Copyright Info -->
       <div class="mt-8 text-center text-sm text-gray-500">
-        &copy; 2024 EventConnect. All Rights Reserved.
+        {{ 'footer.copyright' | translate }}
       </div>
     </div>
   </footer>
-
-
-
-  <!--<footer class="text-center p-5 bg-gray-900 text-white">
-    &copy; 2024 EventConnect. All Rights Reserved.
-  </footer>-->
 </div>
